@@ -88,12 +88,13 @@ class ObjectDetectorHelper(
                 MODEL_EFFICIENTDETV0 -> "efficientdet-lite0.tflite"
                 MODEL_EFFICIENTDETV1 -> "efficientdet-lite1.tflite"
                 MODEL_EFFICIENTDETV2 -> "efficientdet-lite2.tflite"
+                MY_MODEL -> "detect.tflite"
                 else -> "mobilenetv1.tflite"
             }
 
         try {
             objectDetector =
-                ObjectDetector.createFromFileAndOptions(context, modelName, optionsBuilder.build())
+                ObjectDetector.createFromFileAndOptions(context, modelName,optionsBuilder.build())
         } catch (e: IllegalStateException) {
             objectDetectorListener?.onError(
                 "Object detector failed to initialize. See error logs for details"
@@ -149,5 +150,6 @@ class ObjectDetectorHelper(
         const val MODEL_EFFICIENTDETV0 = 1
         const val MODEL_EFFICIENTDETV1 = 2
         const val MODEL_EFFICIENTDETV2 = 3
+        const val MY_MODEL = 4
     }
 }
